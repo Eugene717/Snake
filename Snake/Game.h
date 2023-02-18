@@ -13,7 +13,7 @@ class Game
 public:
 	Game();
 	~Game();
-	void Input();
+	void Input(sf::Keyboard::Key key);
 	void Update();
 	void Render(sf::RenderWindow& window);
 };

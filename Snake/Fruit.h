@@ -4,8 +4,7 @@
 class Fruit
 {
 	int x_, y_;
-	static sf::Texture texture_;
-	sf::Sprite sprite_;
+	sf::RectangleShape body_;
 public:
 	Fruit();
 	void Init(const int x, const int y);

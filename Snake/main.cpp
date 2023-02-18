@@ -14,7 +14,7 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 			if (event.type == sf::Event::KeyPressed)
-				game.Input();
+				game.Input(event.key.code);
 		}
 
 		game.Update();

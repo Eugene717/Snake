@@ -8,13 +8,14 @@ Game::Game()
 {
 	snake_ = new Snake();
 	fruit_ = new Fruit();
+	fruit_->Init(14, 7);
 
 	sf::RectangleShape* board = new sf::RectangleShape;
-	board->setFillColor(sf::Color(50,205,50));
-	board->setSize(sf::Vector2f(700, 500));
+	board->setFillColor(sf::Color::Black);
+	board->setSize(sf::Vector2f(701, 526));
 	board->setOutlineThickness(50);
 	board->setOutlineColor(sf::Color(80, 80, 80));
-	board->setPosition(50, 50);
+	board->setPosition(50, 40);
 	objects_.push_back(board);
 }
 
@@ -45,14 +46,14 @@ void Game::SpawnFruit()
 	}
 }
 
-void Game::Input()
+void Game::Input(sf::Keyboard::Key key)
 {
-	snake_->Input();
+	snake_->Input(key);
 }
 
 void Game::Update()
 {
-
+	snake_->Update();
 }
 
 void Game::Render(sf::RenderWindow& window)
