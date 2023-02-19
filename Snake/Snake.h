@@ -9,6 +9,7 @@ class Snake
 	static std::list<Snake*> snake_;
 	Snake const* prev_;
 	static bool eatFruit_;
+	static int fruitX_, fruitY_;
 
 	static int dir_;
 	int x_, y_;
@@ -19,8 +20,10 @@ class Snake
 public:
 	Snake(Snake const* prev = nullptr);
 	~Snake();
-	void Input(sf::Keyboard::Key key);
-	void Update();
+	bool FreePlace(const int x, const int y) const;
+	bool EatFruit() const;
+	bool Input(sf::Keyboard::Key key);
+	bool Update();
 	void Render(sf::RenderWindow& window);
 };
 

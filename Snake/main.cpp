@@ -4,6 +4,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Snake");
+	window.setFramerateLimit(10);
 	Game game;
 
 	while (window.isOpen())

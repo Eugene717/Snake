@@ -6,6 +6,7 @@
 
 Game::Game()
 {
+	gameStarted = false;
 	snake_ = new Snake();
 	fruit_ = new Fruit();
 	fruit_->Init(14, 7);
@@ -40,20 +41,32 @@ void Game::SpawnFruit()
 		x = rd() % 20;
 		y = rd() % 15;
 
-		
-
-		fruit_->Init(x, y);
+		if (snake_->FreePlace(x, y))
+		{
+			fruit_->Init(x, y);
+			break;
+		}
 	}
 }
 
 void Game::Input(sf::Keyboard::Key key)
 {
+	if (!gameStarted)
+		if (snake_->Input(key))
+			gameStarted = true;
+		else
+			return;
+
 	snake_->Input(key);
 }
 
 void Game::Update()
 {
-	snake_->Update();
+	if (gameStarted)
+		if (!snake_->Update())
+			gameStarted = false;    //game end
+	if (snake_->EatFruit())
+		SpawnFruit();
 }
 
 void Game::Render(sf::RenderWindow& window)
