@@ -44,12 +44,16 @@ Snake::Snake(int x, int y) : x_(x), y_(y)
 
 Snake::~Snake()
 { 
-	for (auto it = snake_.begin(); it != snake_.end(); ++it)
+	if (prev_ == nullptr)
 	{
-		delete* it;
+		while (snake_.size() != 1)
+		{
+			delete snake_.back();
+			snake_.pop_back();
+		}
+		dir_ = 1;
+		snake_.clear();
 	}
-
-	snake_.clear();
 	//delete all and clear massive
 }
 

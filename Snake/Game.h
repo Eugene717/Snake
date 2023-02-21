@@ -8,9 +8,13 @@ class Game
 	Snake* snake_;
 	Fruit* fruit_;
 	std::vector<sf::Drawable*> objects_;
-	bool gameStarted;
+	bool gameStarted_, gameEnded_;
+	int score_;
+	sf::Font font_;
 
 	void SpawnFruit();
+	void EndGame();
+	void NewGame();
 public:
 	Game();
 	~Game();
