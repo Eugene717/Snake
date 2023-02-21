@@ -43,7 +43,11 @@ void Game::EndGame()
 {
 	gameEnded_ = true;
 	gameStarted_ = false;
-	sf::Text* end = new sf::Text("Game End!", font_, 30);
+	sf::Text* end;
+	if (score_ == 3000)
+		end = new sf::Text("You Lose!", font_, 30);
+	else
+		end = new sf::Text("You Win!", font_, 30);
 	sf::Text* start = new sf::Text("Press any key to start a new game", font_, 30);
 
 	end->setFillColor(sf::Color::White);
@@ -112,13 +116,20 @@ void Game::Input(sf::Keyboard::Key key)
 void Game::Update()
 {
 	if (gameStarted_)
+	{
 		if (!snake_->Update())
 		{
 			EndGame();
 			return;
 		}
-	if (snake_->EatFruit())
-		SpawnFruit();
+		if (snake_->EatFruit())
+		{
+			if (score_ == 3000)
+				EndGame();
+			else
+				SpawnFruit();
+		}
+	}
 }
 
 void Game::Render(sf::RenderWindow& window)
