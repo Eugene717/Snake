@@ -45,9 +45,9 @@ void Game::EndGame()
 	gameStarted_ = false;
 	sf::Text* end;
 	if (score_ == 3000)
-		end = new sf::Text("You Lose!", font_, 30);
-	else
 		end = new sf::Text("You Win!", font_, 30);
+	else
+		end = new sf::Text("You Lose!", font_, 30);
 	sf::Text* start = new sf::Text("Press any key to start a new game", font_, 30);
 
 	end->setFillColor(sf::Color::White);
