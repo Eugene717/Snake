@@ -147,4 +147,6 @@ void Game::Render(sf::RenderWindow& window)
 	{
 		window.draw(*objects_[i]);
 	}
+
+	window.display();
 }
